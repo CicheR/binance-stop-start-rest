@@ -1,4 +1,6 @@
 {
+  "main": "StopStartRest.js",
+  "author": "CicheR",
   "dependencies": {
     "dotenv": "^16.4.5",
     "newman": "^6.1.3"
