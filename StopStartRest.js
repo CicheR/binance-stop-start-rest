@@ -1,6 +1,8 @@
 require('dotenv').config();
 const newman = require('newman'); // require Newman in your project
 
+//heroku ps:scale worker=1
+
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;
 const INTERVAL_MIN = Number(process.env.INTERVAL_MIN);

@@ -1,6 +1,12 @@
 {
-  "main": "StopStartRest.js",
+  "name": "binance-stop-start-rest",
+  "version": "0.9.0",
+  "description": "Allow to maintain the “Taking a rest” status for more than the default 1 hour time limit",
   "author": "CicheR",
+  "main": "StopStartRest.js",
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "dotenv": "^16.4.5",
     "newman": "^6.1.3"
