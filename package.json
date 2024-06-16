@@ -4,6 +4,10 @@
   "description": "Allow to maintain the “Taking a rest” status for more than the default 1 hour time limit",
   "author": "CicheR",
   "main": "StopStartRest.js",
+  "scripts": {
+    "start": "node StopStartRest.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "engines": {
     "node": "20.x"
   },
