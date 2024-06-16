@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "bc0b41c2-1a67-45bf-af27-238f1bec9547",
+		"name": "Binance Stop/Start Rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1262216"
+	},
+	"item": [
+		{
+			"name": "Rest.end",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/sapi/v1/c2c/merchant/endRest?timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"c2c",
+						"merchant",
+						"endRest"
+					],
+					"query": [
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rest.start",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/sapi/v1/c2c/merchant/startRest?timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"c2c",
+						"merchant",
+						"startRest"
+					],
+					"query": [
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{API_KEY}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-MBX-APIKEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"cryptoJS = require('crypto-js');",
+					"",
+					"",
+					"//var queryStringToSign = pm.collectionVariables(\"queryStringToSign\");",
+					"",
+					"var timestamp = Date.now(); //Math.floor(Date.now() / 1000);",
+					"",
+					"var secretKey = pm.globals.get(\"API_SECRET\");",
+					"",
+					"var hash = cryptoJS.HmacSHA256('timestamp=' + timestamp, secretKey).toString();",
+					"",
+					"pm.collectionVariables.set(\"timestamp\", timestamp);",
+					"pm.collectionVariables.set(\"signature\", hash);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "https://api.binance.com",
+			"type": "string"
+		},
+		{
+			"key": "signature",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "timestamp",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "baseURL2",
+			"value": "https://c2c-admin.binance.com",
+			"type": "string"
+		},
+		{
+			"key": "P2PURL",
+			"value": "https://p2p.binance.com",
+			"type": "string"
+		}
+	]
+}
